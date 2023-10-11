@@ -96,11 +96,38 @@ CREATE TABLE `scanlogin_loginAuth` (
 
 **你所配置的服务器域名必须要在微信小程序管理后台的 开发管理->开发设置->服务器域名->request合法域名进行配置后，并且需要备案，开启https访问，才能生效。**
 
+小程序发布之后，微信扫一扫，扫描网页生成的小程序码，才能正常使用。
+
 使用
 ---
+假设你的服务器域名是 www.qq.com <br/>
+后端代码部署在二级目录，目录名称是：xcxScanLogin <br/>
+那么你可以直接在你的网页通过a标签跳转至： <br/>
+```
+www.qq.com/xcxScanLogin/createQcode
+```
+即可打开扫码页面。 <br/>
+如果你需要进行回调，那么可以直接在Url后面加入callback <br/>
+假设你的callback页面是：https://www.qq.com/call/
+```
+www.qq.com/xcxScanLogin/createQcode/?callback=https://www.qq.com/call/
+```
+扫码登录授权成功后，将会跳转到callback地址并携带token参数。 <br/>
+例如：
+```
+https://www.qq.com/call/?token=xxxxxxxxxxxx
+```
+这个token参数会被记录在 scanlogin_loginAuth 这个表的 token字段。 <br/>
 
-在完成以上配置后，
-你可以直接在你的网页通过a标签跳转至 createQcode/index.html 进入扫码页面。
+如果你需要在你网站实现自己的页面，那么可以在你的网站通过异步请求：
+```
+www.qq.com/xcxScanLogin/createQcode/createQcode.php
+```
+将会返回JSON格式的数据：
+```
+{'':200,'msg' => '创建成功','scene' => 'xxxxxxx','qrcode' => 'xxxxxx.png'}
+```
+注意：'qrcode' => 'xxxxxx.png' 真实小程序码地址是 qrcode 目录里面的 xxxxxx.png ，即需要加上目录名才可以正常在页面显示小程序码。 <br/>
 
 在线体验
 ---
