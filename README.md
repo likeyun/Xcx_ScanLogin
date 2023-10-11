@@ -83,7 +83,7 @@ $配置=数组（
 
 **以phpMyAdmin操作为例：**
 
-![ phpMyAdmin ] ( https://img10.360buyimg.com/imgzone/jfs/t1/189338/34/38528/55535/65267070F59c28ec8/e70cc6b7cec49bdc.jpg )
+![](https://img10.360buyimg.com/imgzone/jfs/t1/189338/34/38528/55535/65267070F59c28ec8/e70cc6b7cec49bdc.jpg)
 
 微信小程序配置及发布
 ---
