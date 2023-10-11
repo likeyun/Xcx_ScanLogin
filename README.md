@@ -14,23 +14,23 @@
 
 以下是服务端的代码结构：
 
-![](/img/bVc91fm)
+![服务端的代码结构](http://img10.360buyimg.com/imgzone/jfs/t1/43837/32/23508/101315/6526695dFbaa927d3/b29a153ca9c6fbf7.jpg)
 
 访问 **`createQrcode`** 目录即可生成一个小程序码。
 
-![image.png](/img/bVc91gh)
+![生成一个小程序码](https://img10.360buyimg.com/imgzone/jfs/t1/219772/40/35160/20329/6526695dF28d1bcc6/a901aa6d25ca41be.jpg)
 
 **扫码后打开小程序**
 
-![image.png](/img/bVc91fH)
+![扫码后打开小程序](https://img10.360buyimg.com/imgzone/jfs/t1/219772/40/35160/20329/6526695dF28d1bcc6/a901aa6d25ca41be.jpg)
 
 此时，网页端也会有相应的变化，会立刻切换为已扫码。
 
-![image.png](/img/bVc91fK)
+![切换为已扫码](https://img10.360buyimg.com/imgzone/jfs/t1/100144/8/40511/15921/6526695dF3edeb10c/043fd766ec1836db.jpg)
 
-当在小程序点击 **`授权登录`** 后，网页端会切换为 **`已登录`**，如果你配置了 **`callback`**，登录成功后会自动跳转至 **`callback`** 并且携带 **`token`** 参数。
+当在小程序点击 **`授权登录`** 后，网页端会切换为 **`登录成功`**，如果你配置了 **`callback`**，登录成功后会自动跳转至 **`callback`** 并且携带 **`token`** 参数。
 
-![image.png](/img/bVc91fS)
+![已登录](https://img10.360buyimg.com/imgzone/jfs/t1/224793/36/8/15732/6526695dFd6bbbefa/9fe8311d55a52b68.jpg)
 
 在线体验
 ---
