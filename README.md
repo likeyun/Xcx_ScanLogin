@@ -127,9 +127,12 @@ www.qq.com/xcxScanLogin/createQcode/createQcode.php
 ```
 {'code':200, 'msg' => '创建成功', 'scene' => 'xxxxxxx', 'qrcode' => 'xxxxxx.png'}
 ```
-code=200代表创建小程序码成功。 使用异步的方式代表你需要根据状态码判断扫码状态，可以查看 createQcode.php 的每个状态返回的状态码去编写，做好页面的轮询。<br/>
+code=200代表创建小程序码成功。 使用异步的方式代表你需要根据状态码判断扫码状态，可以查看 createQcode.php 的每个状态返回的状态码去编写，做好页面的轮询。<br/><br/>
 注意：'qrcode' => 'xxxxxx.png' 真实小程序码地址是 qrcode 目录里面的 xxxxxx.png ，即需要加上目录名才可以正常在页面显示小程序码。 <br/>
-qrcode 目录里面的 xxxxxx.png 会在授权成功后自动删除。
+qrcode 目录里面的 xxxxxx.png 会在授权成功后自动删除。<br/><br/>
+
+登录成功逻辑：<br/>
+createQcode/checkScanStatus.php 这个是轮询扫码结果的，里面可以在登录成功的那一步处理你的登录成功后的逻辑。
 
 在线体验
 ---
