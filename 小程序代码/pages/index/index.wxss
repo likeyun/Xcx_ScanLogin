@@ -1,0 +1,128 @@
+.container {
+	width: 93%;
+	margin: 0 auto;
+}
+
+.loginAuth {
+	width: 100%;
+	margin: 30px auto 0;
+	background: #fff;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.loginAuth .avatar {
+	width: 90px;
+	height: 90px;
+	margin: 50px auto 0;
+}
+.loginAuth .avatar image {
+	width: 90px;
+	height: 90px;
+}
+.loginAuth .nickname {
+	text-align: center;
+	color: #999;
+	font-size: 33rpx;
+	margin-top: 15px;
+	margin-bottom: 50px;
+}
+.loginAuth .button {
+	padding: 12px;
+	width: 150px;
+	margin: 0 auto;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 33rpx;
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+.loginAuth .auth-login {
+	background: #07c160;
+	color: #fff;
+}
+.loginAuth .cancel-login {
+	background: #eee;
+	color: #666;
+}
+
+.auth-know {
+	text-align: center;
+	font-size: 28rpx;
+	color: #999;
+	width: 80%;
+	margin: 35px auto 25px;
+}
+.auth-know .blue-font {
+	color: #576b95;
+	padding: 0 2px;
+}
+
+/* 扫码 */
+.scanQrcode {
+	width: 100%;
+	margin: 30px auto 0;
+	background: #fff;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.scanQrcode .tips-logo {
+	width: 90px;
+	height: 90px;
+	margin: 50px auto 0;
+}
+.scanQrcode .tips-logo image {
+	width: 90px;
+	height: 90px;
+}
+.scanQrcode .scan-tips {
+	text-align: center;
+	color: #999;
+	font-size: 50rpx;
+	margin-top: 15px;
+	margin-bottom: 50px;
+}
+.scanQrcode .button {
+	padding: 12px;
+	width: 150px;
+	margin: 0 auto;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 33rpx;
+	font-weight: 400;
+}
+.scanQrcode .scan-qrcode {
+	background: #07c160;
+	color: #fff;
+	margin-bottom: 25px;
+}
+
+.loginResult {
+	width: 100%;
+	margin: 30px auto 0;
+	background: #fff;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.loginResult .tips-logo {
+	width: 90px;
+	height: 90px;
+	margin: 50px auto 0;
+}
+.loginResult .tips-logo image {
+	width: 90px;
+	height: 90px;
+}
+.loginResult .login-success {
+	text-align: center;
+	color: #333;
+	font-size: 50rpx;
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+.loginResult .login-fail {
+	text-align: center;
+	color: #fa5151;
+	font-size: 50rpx;
+	margin-top: 15px;
+	margin-bottom: 25px;
+}

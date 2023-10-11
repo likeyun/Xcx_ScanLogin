@@ -1,0 +1,55 @@
+<view class="container">
+
+<!-- 扫描二维码 -->
+<view class="scanQrcode" wx:if="{{scanStep == 1}}">
+
+	<!-- 提醒logo -->
+	<view class="tips-logo">
+		<image src="../images/tips.png"></image>
+	</view>
+
+	<!-- 扫码提示 -->
+	<view class="scan-tips">请使用微信扫一扫</view>
+</view>
+
+<!-- 授权登录 -->
+<view class="loginAuth" wx:if="{{scanStep == 2}}">
+	
+	<!-- 头像区域 -->
+	<view class="avatar">
+		<image src="../images/warn.png"></image>
+	</view>
+
+	<!-- 昵称区域 -->
+	<view class="nickname">使用微信授权登录</view>
+
+	<!-- 授权按钮 -->
+	<view class="button auth-login" bind:tap="loginAuth">授权登录</view>
+
+	<!-- 取消授权 -->
+	<view class="button cancel-login" bind:tap="cancelAuth">取消授权</view>
+
+	<!-- 授权须知 -->
+	<view class="auth-know">
+		<span>授权登录即同意</span>
+		<span class="blue-font">xxx用户服务协议</span>和
+		<span class="blue-font">xxx用户隐私协议</span>
+		<span>，请阅读以上两项协议。</span>
+	</view>
+</view>
+
+<!-- 登录结果 -->
+<view class="loginResult" wx:if="{{scanStep == 3}}">
+
+	<!-- 提醒logo -->
+	<view class="tips-logo">
+		<image src="../images/success.png" wx:if="{{loginSuccess}}"></image>
+		<image src="../images/fail.png" wx:else></image>
+	</view>
+
+	<!-- 登录结果 -->
+	<view class="login-success" wx:if="{{loginSuccess}}">登录成功</view>
+	<view class="login-fail" wx:else>{{errorMsg}}</view>
+</view>
+
+</view>

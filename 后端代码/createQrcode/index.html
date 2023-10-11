@@ -1,0 +1,243 @@
+<html>
+    <head>
+        <title>微信小程序扫码授权登录</title>
+        <meta name="wechat-enable-text-zoom-em" content="true">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="color-scheme" content="light dark">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+        <link rel="shortcut icon" type="image/x-icon" href="//res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico" reportloaderror>
+        <link rel="mask-icon" href="//res.wx.qq.com/a/wx_fed/assets/res/MjliNWVm.svg" color="#4C4C4C" reportloaderror>
+        <link rel="apple-touch-icon-precomposed" href="//res.wx.qq.com/a/wx_fed/assets/res/OTE0YTAw.png" reportloaderror>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="referrer" content="origin-when-cross-origin">
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .title {
+               text-align: center;
+               margin-top: 50px;
+               font-size: 25px;
+            }
+            #createQrcode {
+                border: none;
+                padding: 12px;
+                background: #07C160;
+                color: #fff;
+                font-size: 16px;
+                border-radius: 10px;
+                margin: 30px auto 0;
+                display: block;
+                cursor: pointer;
+                outline: none;
+                -webkit-tap-highlight-color:rgba(255,0,0,0);
+            }
+            
+            #qrcode {
+                width: 220px;
+                height: 220px;
+                margin: 30px auto 0;
+                display: none;
+            }
+            
+            #qrcode img {
+                width: 220px;
+                height: 220px;
+            }
+            
+            #status {
+                border: none;
+                padding: 12px 15px;
+                background: #eee;
+                color: #666;
+                font-size: 18px;
+                border-radius: 100px;
+                margin: 15 auto 0;
+                display: block;
+                cursor: pointer;
+                outline: none;
+                -webkit-tap-highlight-color:rgba(255,0,0,0);
+                display: none;
+            }
+        </style>
+    </head>
+    
+    <body>
+        
+        <!--标题-->
+        <p class="title">微信小程序扫码授权登录示例</p>
+        
+        <!--生成按钮-->
+        <button id="createQrcode" onclick="createQrcode()">生成微信小程序码</button>
+        
+        <!--小程序码显示区域-->
+        <div id="qrcode"></div>
+        
+        <!--状态-->
+        <button id="status"></button>
+        
+        <!--scene隐藏域-->
+        <input type="hidden" id="scene" />
+        
+        <script>
+        
+            // 定义一个全局变量来控制轮询状态
+            var pollingInterval;
+            
+            // 用于记录轮询次数的变量
+            var pollingCount = 0;
+            
+            // 创建小程序码
+            function createQrcode() {
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "createQrcode.php", true);
+            
+                xhr.onreadystatechange = function () {
+                    
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        
+                        // 渲染小程序码
+                        var response = JSON.parse(xhr.responseText);
+                        document.getElementById("qrcode").style.display = "block";
+                        document.getElementById("qrcode").innerHTML = '<img src="qrcode/'+response.qrcode+'" id="miniproQrCode" />';
+                        document.getElementById("createQrcode").style.display = "none";
+                        document.getElementById("status").style.display = "block";
+                        document.getElementById("status").innerHTML = '请使用微信扫码';
+                        document.getElementById("scene").value = response.scene;
+                        
+                        // 重置轮询次数
+                        pollingCount = 0;
+                        
+                        // 开始轮询
+                        startPolling();
+                    }
+                };
+                xhr.send();
+            }
+            
+            // 开始轮询
+            // 1500毫秒轮询一次
+            function startPolling() {
+                var pollingInterval = setInterval(function () {
+                    pollDatabase(pollingInterval);
+                }, 1500);
+            }
+            
+            // 轮询扫码状态
+            function pollDatabase(pollingInterval) {
+                
+                var sceneValue = document.getElementById("scene").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "checkScanStatus.php?scene=" + sceneValue, true);
+            
+                xhr.onreadystatechange = function () {
+                    
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        
+                        // 获取轮询结果
+                        var response = JSON.parse(xhr.responseText);
+                        document.getElementById("status").innerHTML = response.msg;
+                        
+                        // 轮询的信息
+                        console.log(response.msg)
+                        
+                        // 每次轮询递增计数
+                        pollingCount++;
+                        
+                        // 204状态码
+                        if (response.code == 204) {
+                            
+                            // 修改为已取消的图片
+                            document.getElementById("miniproQrCode").src = 'isCancel.png';
+                            
+                            // 停止轮询
+                            clearInterval(pollingInterval);
+                        }
+                        
+                        // 203状态码
+                        if (response.code == 203) {
+                            
+                            // 修改为已扫码的图片
+                            document.getElementById("miniproQrCode").src = 'isScan.png';
+                        }
+                        
+                        // 200状态码
+                        if (response.code == 200) {
+                            
+                            // 修改为登录成功的图片
+                            document.getElementById("miniproQrCode").src = 'loginSuccess.png';
+                            
+                            // 登录成功的逻辑
+                            // 例如修改DOM或者跳转到Url
+                            // 以回调地址为例
+                            // 检查URL中是否包含'?callback='
+                            if (window.location.href.indexOf('?callback=') !== -1) {
+                                var callbackUrl = window.location.href.split('?callback=')[1];
+                                
+                                // 去掉参数部分
+                                callbackUrl = callbackUrl.split('&')[0];
+                            
+                                if (isValidCallback(callbackUrl)) {
+                                    
+                                    // 添加斜杠结尾
+                                    callbackUrl = addTrailingSlash(callbackUrl);
+                                    
+                                    // 跳转到回调地址并传递token
+                                    location.href = callbackUrl + '?token=' + response.token;
+                                    
+                                } else {
+                                    
+                                    // 无需添加斜杠
+                                    // 跳转到回调地址并传递token
+                                    location.href = callbackUrl + '?token=' + response.token;
+                                }
+                            }
+                            
+                            // 用于验证callback是不是符合格式的域名
+                            function isValidCallback(callback) {
+                                
+                                // 使用正则表达式验证是否是有效的域名或域名+目录
+                                var pattern = /^(https?:\/\/)?([a-z\d]([a-z\d-]*[a-z\d])*\.)+[a-z]{2,}(\/\w*\/?)?$/i;
+                                return pattern.test(callback);
+                            }
+                            
+                            // 添加/作为结尾
+                            function addTrailingSlash(callback) {
+                                
+                                // 如果字符串不以斜杠结尾，添加斜杠
+                                if (!callback.endsWith('/')) {
+                                    callback += '/';
+                                }
+                                return callback;
+                            }
+                            
+                            // 停止轮询
+                            clearInterval(pollingInterval);
+                            
+                        }else if (pollingCount >= maxPollingCount) {
+                            
+                            // 修改为小程序码已过期的图片
+                            document.getElementById("miniproQrCode").src = 'isExpire.png';
+                            document.getElementById("status").innerHTML = '小程序码已过期，请刷新';
+                            
+                            // 停止轮询
+                            clearInterval(pollingInterval);
+                        }
+                    }
+                };
+                xhr.send();
+            }
+            
+            // 设置最大轮询次数
+            var maxPollingCount = 60;
+
+        </script>
+        
+    </body>
+</html>
