@@ -119,20 +119,21 @@ https://www.qq.com/call/?token=xxxxxxxxxxxx
 ```
 这个token参数会被记录在 scanlogin_loginAuth 这个表的 token字段。 <br/>
 
-如果你需要在你网站实现自己的页面，那么可以在你的网站通过异步请求：
+如果你需要在你网站实现自己的页面或显示方式，例如点击登录弹出一个模态框，那么可以在你的网站通过异步请求：
 ```
 www.qq.com/xcxScanLogin/createQcode/createQcode.php
 ```
-将会返回JSON格式的数据：
+将会返回JSON对象：
 ```
 {'code':200, 'msg' => '创建成功', 'scene' => 'xxxxxxx', 'qrcode' => 'xxxxxx.png'}
 ```
-code=200代表创建小程序码成功。 使用异步的方式代表你需要根据状态码判断扫码状态，可以查看 createQcode.php 的每个状态返回的状态码去编写，做好页面的轮询。<br/><br/>
-注意：'qrcode' => 'xxxxxx.png' 真实小程序码地址是 qrcode 目录里面的 xxxxxx.png ，即需要加上目录名才可以正常在页面显示小程序码。 <br/>
-qrcode 目录里面的 xxxxxx.png 会在授权成功后自动删除。<br/><br/>
+code=200代表创建小程序码成功。<br/><br/>
+使用异步的方式代表你需要根据状态码判断扫码状态，可以查看 `createQcode.php` 的每个状态返回的状态码去编写，做好页面的轮询。<br/><br/>
+注意：'qrcode' => 'xxxxxx.png' 真实小程序码地址是 `qrcode目录` 里面的 `xxxxxx.png` ，即需要加上目录名才可以正常在页面显示小程序码。 即： `./qrcode/xxxxxx.png` <br/><br/>
+`qrcode目录` 里面的 `xxxxxx.png` 会在授权成功后自动删除，这个是临时图片文件。<br/><br/>
 
 登录成功逻辑：<br/>
-createQcode/checkScanStatus.php 这个是轮询扫码结果的，里面可以在登录成功的那一步处理你的登录成功后的逻辑。
+`createQcode/checkScanStatus.php` 这个是轮询扫码结果，里面可以在登录成功的那步处理你的登录成功后的逻辑，例如储存SESSION、插入数据库记录、缓存等。
 
 在线体验
 ---
