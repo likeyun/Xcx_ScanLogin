@@ -135,6 +135,10 @@ code=200代表创建小程序码成功。<br/><br/>
 登录成功逻辑：<br/>
 `createQcode/checkScanStatus.php` 这个是轮询扫码结果，里面可以在登录成功的那步处理你的登录成功后的逻辑，例如储存SESSION、插入数据库记录、缓存等。
 
+# 其它
+
+为简化开发，我做的比较粗糙，每个状态显示的结果都是以图片呈现，所以便有了isScan.png、isExpire.png、loginSuccess.png、isCancel.png这些图片，这些图片都是基于生成的小程序码使用Photoshop软件添加高斯模糊效果，再打上文字保存的，然后用于每个扫码阶段显示的一个小程序码模糊效果以及文字显示，建议自己另外编写CSS以实现HTML修改DOM的方式实现模糊和文字显示。
+
 在线体验
 ---
 https://likeyunkeji.likeyunba.com/likeyunkeji_minipro/createQrcode/
