@@ -22,8 +22,8 @@
 
 **扫码后打开小程序**
 
-![扫码后打开小程序1]（https://img10.360buyimg.com/imgzone/jfs/t1/187543/34/40388/16060/65268f34Fc1ed2c64/ecce25dfa55a5add.jpg）
-![扫码后打开小程序2]（https://img10.360buyimg.com/imgzone/jfs/t1/163510/35/41873/14566/65268f34F20adacd5/7f9d834e22eec651.jpg）
+![扫码后打开小程序1](https://img10.360buyimg.com/imgzone/jfs/t1/187543/34/40388/16060/65268f34Fc1ed2c64/ecce25dfa55a5add.jpg)
+![扫码后打开小程序2](https://img10.360buyimg.com/imgzone/jfs/t1/163510/35/41873/14566/65268f34F20adacd5/7f9d834e22eec651.jpg)
 
 此时，网页端也会有相应的变化，会立刻切换为已扫码。
 
