@@ -22,7 +22,7 @@
 
 **扫码后打开小程序**
 
-![扫码后打开小程序](https://img10.360buyimg.com/imgzone/jfs/t1/219772/40/35160/20329/6526695dF28d1bcc6/a901aa6d25ca41be.jpg)
+![扫码后打开小程序](https://img10.360buyimg.com/imgzone/jfs/t1/198383/13/31335/11552/65266a67Fd651e0bd/04ea831a08f156bf.jpg)
 
 此时，网页端也会有相应的变化，会立刻切换为已扫码。
 
