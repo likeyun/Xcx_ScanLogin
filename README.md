@@ -14,7 +14,7 @@
 
 以下是服务端的代码结构：
 
-<img src="http://img10.360buyimg.com/imgzone/jfs/t1/43837/32/23508/101315/6526695dFbaa927d3/b29a153ca9c6fbf7.jpg" width="300" />
+<img src="http://img10.360buyimg.com/imgzone/jfs/t1/43837/32/23508/101315/6526695dFbaa927d3/b29a153ca9c6fbf7.jpg" width="500" />
 
 访问 **`createQrcode`** 目录即可生成一个小程序码。
 
