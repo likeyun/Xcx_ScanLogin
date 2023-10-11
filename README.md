@@ -125,9 +125,11 @@ www.qq.com/xcxScanLogin/createQcode/createQcode.php
 ```
 将会返回JSON格式的数据：
 ```
-{'':200,'msg' => '创建成功','scene' => 'xxxxxxx','qrcode' => 'xxxxxx.png'}
+{'code':200, 'msg' => '创建成功', 'scene' => 'xxxxxxx', 'qrcode' => 'xxxxxx.png'}
 ```
+code=200代表创建小程序码成功。 <br/>
 注意：'qrcode' => 'xxxxxx.png' 真实小程序码地址是 qrcode 目录里面的 xxxxxx.png ，即需要加上目录名才可以正常在页面显示小程序码。 <br/>
+qrcode 目录里面的 xxxxxx.png 会在授权成功后自动删除。
 
 在线体验
 ---
