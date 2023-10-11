@@ -53,15 +53,16 @@ $config = array (
     'appid' => 'xxxxxxxxxxxxx', // 小程序appid
     'appsecret' => 'xxxxxxxxxxxxx', // 小程序appsecret
 );
+
+// 除了配置这个文件的这些参数之外
+// 如果你的小程序已经审核通过上线
+// 还需要去 createQrcode/createQrcode.php 里面修改一个参数
+// ------------------------------------------------------
+// 在代码的101行 "env_version" => "develop" 
+// 开发的时候这个参数是develop，小程序审核通过发布上线之后改为release
+// 因为用户无法打开开发版的小程序的，所以审核通过上线的小程序你需要改为release
+// 代表创建的小程序码是线上版本而不是开发版本
 ```
-<br/>
-除了配置这个文件的这些参数之外<br/>
-如果你的小程序已经审核通过上线<br/>
-还需要去 **`createQrcode/createQrcode.php`** 里面修改一个参数<br/>
-在代码的101行 **`"env_version" => "develop"`** <br/>
-开发的时候这个参数是 **`develop`** ，小程序审核通过发布上线之后改为 **`release`** <br/>
-因为用户无法打开开发版的小程序的，所以审核通过上线的小程序你需要改为 **`release`** <br/>
-代表创建的小程序码是线上版本而不是开发版本<br/>
 
 在线体验
 ---
