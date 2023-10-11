@@ -14,7 +14,7 @@
 
 以下是服务端的代码结构：
 
-<img src="http://img10.360buyimg.com/imgzone/jfs/t1/43837/32/23508/101315/6526695dFbaa927d3/b29a153ca9c6fbf7.jpg" width="300" />
+< img src = “http://img10.360buyimg.com/imgzone/jfs/t1/43837/32/23508/101315/6526695dFbaa927d3/b29a153ca9c6fbf7.jpg” 宽度= “300”  />
 
 访问 **`createQrcode`** 目录即可生成一个小程序码。
 
@@ -22,7 +22,8 @@
 
 **扫码后打开小程序**
 
-![扫码后打开小程序](https://img10.360buyimg.com/imgzone/jfs/t1/198383/13/31335/11552/65266a67Fd651e0bd/04ea831a08f156bf.jpg)
+![扫码后打开小程序1]（https://img10.360buyimg.com/imgzone/jfs/t1/187543/34/40388/16060/65268f34Fc1ed2c64/ecce25dfa55a5add.jpg）
+![扫码后打开小程序2]（https://img10.360buyimg.com/imgzone/jfs/t1/163510/35/41873/14566/65268f34F20adacd5/7f9d834e22eec651.jpg）
 
 此时，网页端也会有相应的变化，会立刻切换为已扫码。
 
@@ -41,9 +42,9 @@
 
 只需要配置 **`Db.php`** 这个文件里面的一些参数。<br/><br/>
 
-```
+````
 // 数据库配置
-$config = array (
+$配置=数组（
     'db_host' => 'xxxxxxxxxxxxx', // 数据库服务器
     'db_port' => 3306, // 端口
     'db_name' => 'xxxxxxxxxxxxx', // 数据库名称
@@ -52,37 +53,37 @@ $config = array (
     'db_pass' => 'xxxxxxxxxxxxx', // 数据库密码
     'appid' => 'xxxxxxxxxxxxx', // 小程序appid
     'appsecret' => 'xxxxxxxxxxxxx', // 小程序appsecret
-);
+）；
 
 // 除了配置这个文件的这些参数之外
 // 如果你的小程序已经审核通过上线
 // 还需要去 createQrcode/createQrcode.php 里面修改一个参数
-// ------------------------------------------------------
-// 在代码的101行 "env_version" => "develop" 
+// ------------------------------------------------ ------
+// 在代码的101行 "env_version" => "develop"
 // 开发的时候这个参数是develop，小程序审核通过发布上线之后改为release
 // 因为用户无法打开开发版的小程序的，所以审核通过上线的小程序你需要改为release
 // 代表创建的小程序码是线上版本而不是开发版本
-```
+````
 
 **数据库创建：**
 
 直接在SQL执行的窗口粘贴:
-```
-CREATE TABLE `scanlogin_loginAuth` (
-  `id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  `scene` varchar(32) NOT NULL,
-  `openid` varchar(32) DEFAULT NULL,
-  `createTime` varchar(32) DEFAULT NULL,
-  `authTime` varchar(32) DEFAULT NULL,
+````
+创建表 `scanlogin_loginAuth` (
+  `id` int(10) 主键自动递增不为空，
+  `场景` varchar(32) NOT NULL,
+  `openid` varchar(32) 默认为 NULL，
+  `createTime` varchar(32) 默认为 NULL，
+  `authTime` varchar(32) 默认为 NULL，
   `status` int(1) NOT NULL DEFAULT '1',
   `expire` int(1) NOT NULL DEFAULT '1',
   `token` varchar(32) DEFAULT NULL COMMENT '登录成功的Token'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
+) 引擎=InnoDB 默认字符集=utf8;
+````
 
 **以phpMyAdmin操作为例：**
 
-![phpMyAdmin](https://img10.360buyimg.com/imgzone/jfs/t1/189338/34/38528/55535/65267070F59c28ec8/e70cc6b7cec49bdc.jpg)
+![ phpMyAdmin ] ( https://img10.360buyimg.com/imgzone/jfs/t1/189338/34/38528/55535/65267070F59c28ec8/e70cc6b7cec49bdc.jpg )
 
 微信小程序配置及发布
 ---
@@ -103,36 +104,36 @@ CREATE TABLE `scanlogin_loginAuth` (
 假设你的服务器域名是 www.qq.com <br/>
 后端代码部署在二级目录，目录名称是：xcxScanLogin <br/>
 那么你可以直接在你的网页通过a标签跳转至： <br/>
-```
+````
 www.qq.com/xcxScanLogin/createQcode
-```
+````
 即可打开扫码页面。 <br/>
 如果你需要进行回调，那么可以直接在Url后面加入callback <br/>
 假设你的callback页面是：https://www.qq.com/call/
-```
+````
 www.qq.com/xcxScanLogin/createQcode/?callback=https://www.qq.com/call/
-```
+````
 扫码登录授权成功后，将会跳转到callback地址并携带token参数。 <br/>
 例如：
-```
+````
 https://www.qq.com/call/?token=xxxxxxxxxxxx
-```
-这个token参数会被记录在 scanlogin_loginAuth 这个表的 token字段。 <br/>
+````
+这个token参数会被记录在 scanlogin_loginAuth 这个表的 token字段。 
 
 如果你需要在你网站实现自己的页面或显示方式，例如点击登录弹出一个模态框，那么可以在你的网站通过异步请求：
-```
+````
 www.qq.com/xcxScanLogin/createQcode/createQcode.php
-```
+````
 将会返回JSON对象：
-```
+````
 {'code':200, 'msg' => '创建成功', 'scene' => 'xxxxxxx', 'qrcode' => 'xxxxxx.png'}
-```
-code=200代表创建小程序码成功。<br/><br/>
-使用异步的方式代表你需要根据状态码判断扫码状态，可以查看 `createQcode.php` 的每个状态返回的状态码去编写，做好页面的轮询。<br/><br/>
-注意：'qrcode' => 'xxxxxx.png' 真实小程序码地址是 `qrcode目录` 里面的 `xxxxxx.png` ，即需要加上目录名才可以正常在页面显示小程序码。 即： `./qrcode/xxxxxx.png` <br/><br/>
-`qrcode目录` 里面的 `xxxxxx.png` 会在授权成功后自动删除，这个是临时图片文件。<br/><br/>
+````
+code=200代表创建小程序码成功。
+使用异步的方式代表你需要根据状态码判断扫码状态，可以查看 `createQcode.php` 的每个状态返回的状态码去编写，做好页面的轮询。
+注意：'qrcode' => 'xxxxxx.png' 真实小程序码地址是 `qrcode目录` 里面的 `xxxxxx.png` ，即需要加上目录名才可以正常在页面显示小程序码。 即： `./qrcode/xxxxxx.png` 
+`qrcode目录` 里面的 `xxxxxx.png` 会在授权成功后自动删除，这个是临时图片文件。
 
-登录成功逻辑：<br/>
+登录成功逻辑：
 `createQcode/checkScanStatus.php` 这个是轮询扫码结果，里面可以在登录成功的那步处理你的登录成功后的逻辑，例如储存SESSION、插入数据库记录、缓存等。
 
 # 其它
