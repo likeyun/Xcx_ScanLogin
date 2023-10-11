@@ -32,6 +32,11 @@
 
 ![已登录](https://img10.360buyimg.com/imgzone/jfs/t1/224793/36/8/15732/6526695dFd6bbbefa/9fe8311d55a52b68.jpg)
 
+# 程序逻辑
+
+具体逻辑如下：
+![程序逻辑](https://img10.360buyimg.com/imgzone/jfs/t1/168191/28/33813/139647/65266affF3816d7df/f433003bc13bc64b.png)
+
 在线体验
 ---
 https://likeyunkeji.likeyunba.com/likeyunkeji_minipro/createQrcode/
