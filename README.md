@@ -94,6 +94,8 @@ CREATE TABLE `scanlogin_loginAuth` (
 
 ![小程序端的代码](https://img10.360buyimg.com/imgzone/jfs/t1/164943/11/39242/25711/65267794F16c8c03d/ea8218ed67f6a2f5.jpg)
 
+**你所配置的服务器域名必须要在微信小程序管理后台的 开发管理->开发设置->服务器域名->request合法域名进行配置后，并且需要备案，开启https访问，才能生效。**
+
 使用
 ---
 
