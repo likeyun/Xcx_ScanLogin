@@ -84,6 +84,21 @@ CREATE TABLE `scanlogin_loginAuth` (
 
 ![phpMyAdmin](https://img10.360buyimg.com/imgzone/jfs/t1/189338/34/38528/55535/65267070F59c28ec8/e70cc6b7cec49bdc.jpg)
 
+微信小程序配置及发布
+---
+下载小程序端的代码，在微信开发者工具导入项目，修改appid为你的小程序后进行编译。
+
+![小程序端的代码](https://img10.360buyimg.com/imgzone/jfs/t1/151123/24/39070/23735/65267751F0e1c2276/84198275d9b3d71e.jpg)
+
+在 app.js 修改你的服务器域名以及后端服务所在的目录名称，如果是根目录，只需输入一个 / ，如果是二级目录，输入 /目录名/ ，三级目录输入 /二级目录名/三级目录名/ ，其它同理。域名无需携带 http或https
+
+![小程序端的代码](https://img10.360buyimg.com/imgzone/jfs/t1/164943/11/39242/25711/65267794F16c8c03d/ea8218ed67f6a2f5.jpg)
+
+使用
+---
+
+在完成以上配置后，
+你可以直接在你的网页通过a标签跳转至 createQcode/index.html 进入扫码页面。
 
 在线体验
 ---
