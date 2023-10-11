@@ -64,6 +64,23 @@ $config = array (
 // 代表创建的小程序码是线上版本而不是开发版本
 ```
 
+**数据库创建：**
+
+直接在SQL执行的窗口粘贴:
+```
+CREATE TABLE `scanlogin_loginAuth` (
+  `id` int(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `scene` varchar(32) NOT NULL,
+  `openid` varchar(32) DEFAULT NULL,
+  `createTime` varchar(32) DEFAULT NULL,
+  `authTime` varchar(32) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT '1',
+  `expire` int(1) NOT NULL DEFAULT '1',
+  `token` varchar(32) DEFAULT NULL COMMENT '登录成功的Token'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+
 在线体验
 ---
 https://likeyunkeji.likeyunba.com/likeyunkeji_minipro/createQrcode/
