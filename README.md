@@ -82,7 +82,7 @@ CREATE TABLE `scanlogin_loginAuth` (
 
 **以phpMyAdmin操作为例：**
 
-![已登录](https://img10.360buyimg.com/imgzone/jfs/t1/189338/34/38528/55535/65267070F59c28ec8/e70cc6b7cec49bdc.jpg)
+![phpMyAdmin](https://img10.360buyimg.com/imgzone/jfs/t1/189338/34/38528/55535/65267070F59c28ec8/e70cc6b7cec49bdc.jpg)
 
 
 在线体验
