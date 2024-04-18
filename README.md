@@ -142,7 +142,7 @@ code=200代表创建小程序码成功。
 
 在线体验
 ---
-https://likeyunkeji.likeyunba.com/likeyunkeji_minipro/createQrcode/
+https://likeyunkeji.likeyunba.com/liKeYunKaiFaZhe/Xcx_ScanLogin/createQrcode/
 
 作者
 ---
